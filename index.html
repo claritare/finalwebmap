@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Brant Street ZBA Proposal</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <style>
+    body { margin:0; font-family: Arial; }
+    #map { height: 100vh; }
+
+    .panel {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      width: 300px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<div class="panel">
+  <h3>Brant Street ZBA</h3>
+  <p><strong>Clara Revollo</strong></p>
+
+  <p>
+    Zoning By-law Amendment from DC-16 to Downtown Core (DW)
+    to allow a mixed-use development.
+  </p>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+const map = L.map("map").setView([43.3295, -79.8021], 16);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+const polygon = L.polygon([
+  [43.32995022485604, -79.80285384195629],
+  [43.32978243243733, -79.80263926497759],
+  [43.3293648992679, -79.80317034268543],
+  [43.32865469630703, -79.80212964532696],
+  [43.32948976888639, -79.80103530417297],
+  [43.33033263471011, -79.80231740040787]
+], {
+  color: "#8b5a2b",
+  fillColor: "#c58b57",
+  fillOpacity: 0.5
+}).addTo(map);
+
+map.fitBounds(polygon.getBounds());
+</script>
+
+</body>
+</html>
